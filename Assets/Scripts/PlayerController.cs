@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     public float mouseSens = 100f;
     public float moveSpeed = 12f;
+    public float gravity = -9.81f;
+
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
 
     private GameObject _mainCamera;
     public CharacterController characterController;
@@ -16,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 m_Look;
     private Vector2 m_Move;
     public bool cursorInputForLook = true;
+
+    Vector3 velocity;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -45,10 +53,21 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
 
+        //Handle movement
         Vector3 inputDirection = new Vector3(m_Move.x, 0f, m_Move.y).normalized;
         inputDirection = transform.right * m_Move.x + transform.forward * m_Move.y;
         characterController.Move(inputDirection * moveSpeed * Time.deltaTime);
 
+        //Handle gravity
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+        characterController.Move(velocity * Time.deltaTime); 
     }
 
     //Look input using Unity's new PlayerInput system
