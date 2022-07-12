@@ -21,7 +21,6 @@ public class CharacterTarget : MonoBehaviour
     //Does the target need to go +z to get to target. So that the target doesn't need to reach exactly the target
     private bool posToTarget = false;
 
-
     public float gravity = -9.81f;
 
     public Transform groundCheck;
@@ -30,10 +29,13 @@ public class CharacterTarget : MonoBehaviour
 
     Vector3 velocity;
     private bool isGrounded;
+    private TargetManager targetManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        targetManager = FindObjectOfType<TargetManager>();
+
         Debug.Log("Target Spawned");
         UpdateChangeDirectionTime();
         //Generate direction on startup
@@ -70,9 +72,7 @@ public class CharacterTarget : MonoBehaviour
         if(despawnTimer > despawnTime)
         {
             Debug.Log("Target Despawned");
-            TargetManager tm = FindObjectOfType<TargetManager>();
-            tm.SpawnTarget();
-            Destroy(this.gameObject);
+            DestroyTarget();
         }
 
         if(!reachedTargetZ)
@@ -90,7 +90,9 @@ public class CharacterTarget : MonoBehaviour
                 newDirectionTimer = 0f;
             }
         }
-
+    }
+    void FixedUpdate()
+    {
         //Move the target in the direction
         characterController.Move(direction * moveSpeed * Time.deltaTime);
 
@@ -116,4 +118,9 @@ public class CharacterTarget : MonoBehaviour
         changeDirectionTime = Random.Range(minChangeDirectionTime, maxChangeDirectionTime);
     }
 
+    public void DestroyTarget()
+    {
+        targetManager.SpawnTarget();
+        Destroy(this.gameObject);
+    }
 }

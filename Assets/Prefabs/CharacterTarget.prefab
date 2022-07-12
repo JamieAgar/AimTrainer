@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4166845573400787729}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'GroundCheck '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5229065478454719867}
   - component: {fileID: 5229065478454719860}
   - component: {fileID: 5229065478454719862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CharacterTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5229065479641336126}
   - component: {fileID: 5229065479641336124}
   - component: {fileID: 5229065479641336125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PersonModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

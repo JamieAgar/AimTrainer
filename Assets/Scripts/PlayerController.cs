@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Handle look
         float mouseX = m_Look.x * mouseSens * Time.deltaTime;
@@ -52,7 +52,9 @@ public class PlayerController : MonoBehaviour
         _mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         transform.Rotate(Vector3.up * mouseX);
-
+    }
+    void FixedUpdate()
+    {
         //Handle movement
         Vector3 inputDirection = new Vector3(m_Move.x, 0f, m_Move.y).normalized;
         inputDirection = transform.right * m_Move.x + transform.forward * m_Move.y;
