@@ -14,7 +14,6 @@ public class PlayerShoot : MonoBehaviour
     Animator gunAnim;
 
     private PlayerController playerController;
-    public CrosshairController crosshairController;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +43,6 @@ public class PlayerShoot : MonoBehaviour
 
         //Handle animations
         gunAnim.SetTrigger("Shoot");
-
-        //Is it better to do this using events?
-        crosshairController.Fire();
 
         //Handle raycasting + targets
         RaycastHit hit;
