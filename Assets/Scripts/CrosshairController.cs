@@ -6,18 +6,14 @@ using UnityEngine.InputSystem;
 public class CrosshairController : MonoBehaviour
 {
     Animator anim;
-    // Start is called before the first frame update
+
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void Fire()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Debug.Log("Shooting from CrosshairController");
-            anim.SetTrigger("Shoot");
-        }
+        anim.SetTrigger("Shoot");
     }
 }

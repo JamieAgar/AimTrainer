@@ -6,30 +6,47 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     public float fireDelay = 0.1f;
+    private float fireDelayTimer = 0f;
+    private bool canFire = true;
 
     public LayerMask playerBlockerMask;
+
     Animator gunAnim;
+
+    private PlayerController playerController;
+    public CrosshairController crosshairController;
 
     // Start is called before the first frame update
     void Start()
     {
         gunAnim = GetComponentInChildren<Animator>();
+        playerController = GetComponent<PlayerController>();
     }
 
-    private float fireDelayTimer = 0f;
-    public void OnFire(InputValue value)
+    private void Update()
     {
-        //If time since last fired is less than the fireDelay, don't fire
-        fireDelayTimer += Time.deltaTime;
-        if (fireDelayTimer < fireDelay)
+        if (!canFire)
         {
-            fireDelayTimer = 0f;
-            return;
+            fireDelayTimer += Time.deltaTime;
+            if(fireDelayTimer > fireDelay)
+            {
+                canFire = true;
+                fireDelayTimer = 0f;
+            }
         }
+    }
 
-        //Handle gun animation
-        Debug.Log("Shooting from PlayerShoot");
+    public void OnFire()
+    {
+        if (!playerController.cursorInputForLook) return;
+        if (!canFire) return;
+        canFire = false;
+
+        //Handle animations
         gunAnim.SetTrigger("Shoot");
+
+        //Is it better to do this using events?
+        crosshairController.Fire();
 
         //Handle raycasting + targets
         RaycastHit hit;
