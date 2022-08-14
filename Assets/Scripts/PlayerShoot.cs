@@ -14,12 +14,14 @@ public class PlayerShoot : MonoBehaviour
     Animator gunAnim;
 
     private PlayerController playerController;
+    private Camera camera;
 
     // Start is called before the first frame update
     void Start()
     {
         gunAnim = GetComponentInChildren<Animator>();
         playerController = GetComponent<PlayerController>();
+        camera = GetComponentInChildren<Camera>();
     }
 
     private void Update()
@@ -47,17 +49,17 @@ public class PlayerShoot : MonoBehaviour
         //Handle raycasting + targets
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, playerBlockerMask))
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, Mathf.Infinity, playerBlockerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 2f);
-            Debug.Log("Hit");
-            GameObject target = hit.transform.gameObject;
-            target.GetComponent<CharacterTarget>().DestroyTarget();
+            Debug.DrawRay(camera.transform.position, camera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 2f);
+            //Debug.Log("Hit");
+            Target target = hit.transform.gameObject.GetComponent<Target>();
+            target.TargetHit();
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white, 2f);
-            Debug.Log("No Hit");
+            Debug.DrawRay(camera.transform.position, camera.transform.TransformDirection(Vector3.forward) * 1000, Color.white, 2f);
+            //Debug.Log("No Hit");
         }
 
     }

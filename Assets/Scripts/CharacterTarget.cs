@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterTarget : MonoBehaviour
+public class CharacterTarget : MonoBehaviour, Target
 {
-    public float moveSpeed = 12f;
-    public float minChangeDirectionTime = .5f;
-    public float maxChangeDirectionTime = 2f;
-    private float changeDirectionTime;
-    public float despawnTime = 5f;
-
     public CharacterController characterController;
 
     private Vector3 direction;
+    
+    public float moveSpeed = 12f;
+    public float despawnTime = 5f;
+
+    public float gravity = -9.81f;
+    
+    //TODO: Change this to scriptable objects to make it easier to change between difficulties 
+    public float minChangeDirectionTime = .5f;
+    public float maxChangeDirectionTime = 2f;
+    private float changeDirectionTime;
 
     //Initial Z point the target should move to before becoming random. This is to prevent the targets getting stay behind terrain
     private float targetZ = -12f;
@@ -21,21 +25,19 @@ public class CharacterTarget : MonoBehaviour
     //Does the target need to go +z to get to target. So that the target doesn't need to reach exactly the target
     private bool posToTarget = false;
 
-    public float gravity = -9.81f;
-
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
     Vector3 velocity;
     private bool isGrounded;
+
     private TargetManager targetManager;
 
     // Start is called before the first frame update
     void Start()
     {
         targetManager = FindObjectOfType<TargetManager>();
-
         Debug.Log("Target Spawned");
         UpdateChangeDirectionTime();
         //Generate direction on startup
@@ -118,9 +120,15 @@ public class CharacterTarget : MonoBehaviour
         changeDirectionTime = Random.Range(minChangeDirectionTime, maxChangeDirectionTime);
     }
 
+    public void TargetHit()
+    {
+        this.DestroyTarget();
+    }
+
     public void DestroyTarget()
     {
-        targetManager.SpawnTarget();
+        //TODO: Change this to events. Removes the link between the target and the targetManager
+        targetManager.SpawnCharacterTarget();
         Destroy(this.gameObject);
     }
 }

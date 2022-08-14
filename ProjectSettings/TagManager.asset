@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TargetSpawner
+  - CharacterTargetSpawner
+  - CircularTargetSpawner
   layers:
   - Default
   - TransparentFX
