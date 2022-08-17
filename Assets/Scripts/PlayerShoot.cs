@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Target;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerShoot : MonoBehaviour
     private float fireDelayTimer = 0f;
     private bool canFire = true;
 
-    public LayerMask playerBlockerMask;
+    public LayerMask targetMask;
 
     Animator gunAnim;
 
@@ -49,12 +50,13 @@ public class PlayerShoot : MonoBehaviour
         //Handle raycasting + targets
         RaycastHit hit;
 
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, Mathf.Infinity, playerBlockerMask))
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, Mathf.Infinity, targetMask))
         {
             Debug.DrawRay(camera.transform.position, camera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow, 2f);
             //Debug.Log("Hit");
-            Target target = hit.transform.gameObject.GetComponent<Target>();
+            ITarget target = hit.transform.gameObject.GetComponent<ITarget>();
             target.TargetHit();
+            Debug.Log(target.Score);
         }
         else
         {

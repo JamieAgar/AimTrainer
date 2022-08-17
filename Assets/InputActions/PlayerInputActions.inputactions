@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleMenu",
+                    "name": "ToggleCrosshairMenu",
                     "type": "Button",
                     "id": "12744c38-3de8-495b-99fa-4cc20da80842",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleTargetMenu",
+                    "type": "Button",
+                    "id": "0387aee6-ec3a-490e-80df-1f050f3088a2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -270,7 +279,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleMenu",
+                    "action": "ToggleCrosshairMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2128eeb1-26b3-4c6c-8d09-2d48b06f790a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleTargetMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
