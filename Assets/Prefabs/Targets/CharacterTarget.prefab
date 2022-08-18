@@ -209,11 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 5229065478454719860}
-  moveSpeed: 12
-  despawnTime: 5
+  targetSettingsSO: {fileID: 11400000, guid: f1065a072b28c9a4fba3ce24a95c55e6, type: 2}
   gravity: -9.81
-  minChangeDirectionTime: 0.5
-  maxChangeDirectionTime: 2
   groundCheck: {fileID: 4166845573400787729}
   groundDistance: 0.2
   groundMask:

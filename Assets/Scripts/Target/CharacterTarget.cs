@@ -8,17 +8,12 @@ namespace Target
     {
         public CharacterController characterController;
 
+        public TargetSettingsSO targetSettingsSO;
+        private float changeDirectionTime;
+
         private Vector3 direction;
 
-        public float moveSpeed = 12f;
-        public float despawnTime = 5f;
-
         public float gravity = -9.81f;
-
-        //TODO: Change this to scriptable objects to make it easier to change between difficulties 
-        public float minChangeDirectionTime = .5f;
-        public float maxChangeDirectionTime = 2f;
-        private float changeDirectionTime;
 
         //Initial Z point the target should move to before becoming random. This is to prevent the targets getting stay behind terrain
         private float targetZ = -12f;
@@ -48,7 +43,7 @@ namespace Target
         void Start()
         {
             targetManager = FindObjectOfType<TargetManager>();
-            Debug.Log("Target Spawned");
+            //Debug.Log("Target Spawned");
             UpdateChangeDirectionTime();
             //Generate direction on startup
             posToTarget = transform.position.z < targetZ;
@@ -82,9 +77,9 @@ namespace Target
 
             //Despawn the target after some time
             despawnTimer += Time.deltaTime;
-            if (despawnTimer > despawnTime)
+            if (despawnTimer > targetSettingsSO.despawnTime.Value)
             {
-                Debug.Log("Target Despawned");
+                //Debug.Log("Target Despawned");
                 TargetHit();
             }
 
@@ -107,7 +102,7 @@ namespace Target
         void FixedUpdate()
         {
             //Move the target in the direction
-            characterController.Move(direction * moveSpeed * Time.deltaTime);
+            characterController.Move(direction * targetSettingsSO.mimicSpeed.Value * Time.deltaTime);
 
             //Handle gravity
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -128,7 +123,7 @@ namespace Target
 
         void UpdateChangeDirectionTime()
         {
-            changeDirectionTime = Random.Range(minChangeDirectionTime, maxChangeDirectionTime);
+            changeDirectionTime = Random.Range(targetSettingsSO.minChangeTime.Value, targetSettingsSO.maxChangeTime.Value);
         }
 
         public void TargetHit()

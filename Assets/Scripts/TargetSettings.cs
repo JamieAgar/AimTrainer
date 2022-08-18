@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class TargetSettings : MonoBehaviour
 {
@@ -10,10 +9,7 @@ public class TargetSettings : MonoBehaviour
     // Min Change Time Slider, Min Change Time Input, Max Change Time Slider, Max Change Time Input]
     public GameObject[] uiElements;
 
-    private float _mimicSpeed = 12f;
-    private float _despawnTime = 5f;
-    private float _minChangeTime = .5f;
-    private float _maxChangeTime = 2f;
+    public TargetSettingsSO settingsSO;
 
     //TODO: Use these values in the Target scripts
     private void OnEnable()
@@ -23,69 +19,69 @@ public class TargetSettings : MonoBehaviour
     public void UpdateUI()
     {
         Slider speedSlider = uiElements[0].GetComponent<Slider>();
-        speedSlider.value = _mimicSpeed;
+        speedSlider.value = settingsSO.mimicSpeed.Value;
         TMPro.TMP_InputField speedField = uiElements[1].GetComponent<TMPro.TMP_InputField>();
-        speedField.text = _mimicSpeed.ToString();
+        speedField.text = settingsSO.mimicSpeed.Value.ToString();
 
         Slider despawnSlider = uiElements[2].GetComponent<Slider>();
-        despawnSlider.value = _despawnTime;
+        despawnSlider.value = settingsSO.despawnTime.Value;
         TMPro.TMP_InputField despawnField = uiElements[3].GetComponent<TMPro.TMP_InputField>();
-        despawnField.text = _despawnTime.ToString();
+        despawnField.text = settingsSO.despawnTime.Value.ToString();
 
         Slider minChangeTimeSlider = uiElements[4].GetComponent<Slider>();
-        minChangeTimeSlider.value = _minChangeTime;
+        minChangeTimeSlider.value = settingsSO.minChangeTime.Value;
         TMPro.TMP_InputField minChangeTimeField = uiElements[5].GetComponent<TMPro.TMP_InputField>();
-        minChangeTimeField.text = _minChangeTime.ToString();
+        minChangeTimeField.text = settingsSO.minChangeTime.Value.ToString();
 
         Slider maxChangeTimeSlider = uiElements[6].GetComponent<Slider>();
-        maxChangeTimeSlider.value = _maxChangeTime;
+        maxChangeTimeSlider.value = settingsSO.maxChangeTime.Value;
         TMPro.TMP_InputField maxChangeTimeField = uiElements[7].GetComponent<TMPro.TMP_InputField>();
-        maxChangeTimeField.text = _maxChangeTime.ToString();
+        maxChangeTimeField.text = settingsSO.maxChangeTime.Value.ToString();
     }
 
     public void UpdateSpeed(float speed)
     {
-        _mimicSpeed = speed;
+        settingsSO.mimicSpeed.Value = speed;
         UpdateUI();
     }
     public void UpdateDespawnTime(float despawnTime)
     {
-        _despawnTime = despawnTime;
+        settingsSO.despawnTime.Value = despawnTime;
         UpdateUI();
     }
     public void UpdateMinumumChangeTime(float minChangeTime)
     {
-        _minChangeTime = minChangeTime;
+        settingsSO.minChangeTime.Value = minChangeTime;
         UpdateUI();
     }
     public void UpdateMaximumChangeTime(float maxChangeTime)
     {
-        _maxChangeTime = maxChangeTime;
+        settingsSO.maxChangeTime.Value = maxChangeTime;
         UpdateUI();
     }
 
     public void EasyPreset()
     {
-        _mimicSpeed = 8f;
-        _despawnTime = 10f;
-        _minChangeTime = 7f;
-        _maxChangeTime = 7f;
+        settingsSO.mimicSpeed.Value = 8f;
+        settingsSO.despawnTime.Value = 10f;
+        settingsSO.minChangeTime.Value = 7f;
+        settingsSO.maxChangeTime.Value = 7f;
         UpdateUI();
     }
     public void MediumPreset()
     {
-        _mimicSpeed = 12f;
-        _despawnTime = 5f;
-        _minChangeTime = 2f;
-        _maxChangeTime = 8f;
+        settingsSO.mimicSpeed.Value = 12f;
+        settingsSO.despawnTime.Value = 5f;
+        settingsSO.minChangeTime.Value = 2f;
+        settingsSO.maxChangeTime.Value = 8f;
         UpdateUI();
     }
     public void HardPreset()
     {
-        _mimicSpeed = 15f;
-        _despawnTime = 2f;
-        _minChangeTime = .5f;
-        _maxChangeTime = 2f;
+        settingsSO.mimicSpeed.Value = 15f;
+        settingsSO.despawnTime.Value = 2f;
+        settingsSO.minChangeTime.Value = .5f;
+        settingsSO.maxChangeTime.Value = 2f;
         UpdateUI();
     }
 }
