@@ -6,8 +6,6 @@ namespace Target
 {
     public class TargetManager : MonoBehaviour
     {
-        public float targetSpeed = 12f;
-        public TargetSettingsSO targetSettingsSO;
         public ScoreSO scoreSO;
 
         public GameObject characterTargetPrefab;
@@ -29,7 +27,6 @@ namespace Target
             scoreSO.numTargets.Value++;
             GameObject spawner = characterTargetSpawners[Random.Range(0, characterTargetSpawners.Length)];
             GameObject target = Instantiate(characterTargetPrefab, spawner.transform);
-            targetSettingsSO.mimicSpeed.Value = targetSpeed;
         }
 
         public void SpawnCircularTarget()

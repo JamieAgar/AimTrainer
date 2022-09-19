@@ -15,35 +15,50 @@ public class CrosshairSettings : MonoBehaviour
     private float _thickness = 1f;
     private bool _dotState = true;
     private float _dotSize = 1f;
-    private Color _color;
+
+    Slider gapSlider;
+    TMPro.TMP_InputField gapField;
+    Slider sizeSlider;
+    TMPro.TMP_InputField sizeField;
+    Slider thicknessSlider;
+    TMPro.TMP_InputField thicknessField;
+    Toggle dotToggle;
+    Slider dotSizeSlider;
+    TMPro.TMP_InputField dotSizeField;
+
+    void OnEnable()
+    {
+        gapSlider = uiElements[0].GetComponent<Slider>();
+        gapField = uiElements[1].GetComponent<TMPro.TMP_InputField>();
+
+        sizeSlider = uiElements[2].GetComponent<Slider>();
+        sizeField = uiElements[3].GetComponent<TMPro.TMP_InputField>();
+
+        thicknessSlider = uiElements[4].GetComponent<Slider>();
+        thicknessField = uiElements[5].GetComponent<TMPro.TMP_InputField>();
+
+        dotToggle = uiElements[6].GetComponent<Toggle>();
+
+        dotSizeSlider = uiElements[7].GetComponent<Slider>();
+        dotSizeField = uiElements[8].GetComponent<TMPro.TMP_InputField>();
+        UpdateUI();
+    }
 
     public void UpdateUI()
     {
-        Slider gapSlider = uiElements[0].GetComponent<Slider>();
         gapSlider.value = _gap;
-        TMPro.TMP_InputField gapField = uiElements[1].GetComponent<TMPro.TMP_InputField>();
         gapField.text = _gap.ToString();
 
-        Slider sizeSlider = uiElements[2].GetComponent<Slider>();
         sizeSlider.value = _size;
-        TMPro.TMP_InputField sizeField = uiElements[3].GetComponent<TMPro.TMP_InputField>();
         sizeField.text = _size.ToString();
 
-        Slider thicknessSlider = uiElements[4].GetComponent<Slider>();
         thicknessSlider.value = _thickness;
-        TMPro.TMP_InputField thicknessField = uiElements[5].GetComponent<TMPro.TMP_InputField>();
         thicknessField.text = _thickness.ToString();
 
-        Toggle dotToggle = uiElements[6].GetComponent<Toggle>();
         dotToggle.isOn = _dotState;
 
-        Slider dotSizeSlider = uiElements[7].GetComponent<Slider>();
         dotSizeSlider.value = _dotSize;
-        TMPro.TMP_InputField dotSizeField = uiElements[8].GetComponent<TMPro.TMP_InputField>();
         dotSizeField.text = _dotSize.ToString();
-
-        FlexibleColorPicker fcp = uiElements[9].GetComponent<FlexibleColorPicker>();
-        fcp.color = _color;
     }
 
     public void UpdateGap(float gap)
@@ -86,15 +101,6 @@ public class CrosshairSettings : MonoBehaviour
     {
         _dotSize = dotSize;
         crosshairPieces[4].transform.localScale = new Vector3(dotSize, dotSize, 1);
-        UpdateUI();
-    }
-    public void UpdateColour(Color color)
-    {
-        _color = color;
-        for (int i = 0; i < crosshairPieces.Length; i++)
-        {
-            crosshairPieces[i].GetComponent<Image>().color = color;
-        }
         UpdateUI();
     }
 }

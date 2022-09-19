@@ -1274,8 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e98665dcbba97743ae3c0f0e6152683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSpeed: 0.1
-  targetSettingsSO: {fileID: 11400000, guid: f1065a072b28c9a4fba3ce24a95c55e6, type: 2}
+  scoreSO: {fileID: 11400000, guid: 6fd7f41f06efbc944a6e8b69b13647be, type: 2}
   characterTargetPrefab: {fileID: 5229065478454719863, guid: f1fdefdad77392e479c2f493de899bda,
     type: 3}
   circularTargetPrefab: {fileID: 9052643678666909794, guid: 6f2ace7317f2a3e4b86ce7ff5c3c5ade,
@@ -1330,7 +1329,7 @@ PrefabInstance:
     - target: {fileID: 1187298378871502851, guid: 78c141a1ff428ae4bb1f55684b8bd38e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.002794
+      value: -23.21
       objectReference: {fileID: 0}
     - target: {fileID: 1187298378871502851, guid: 78c141a1ff428ae4bb1f55684b8bd38e,
         type: 3}
@@ -3668,6 +3667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -3695,6 +3695,7 @@ MonoBehaviour:
     type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!114 &889135584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5284,7 +5285,7 @@ GameObject:
   - component: {fileID: 1122782657}
   - component: {fileID: 1122782656}
   m_Layer: 5
-  m_Name: CrosshairUI
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

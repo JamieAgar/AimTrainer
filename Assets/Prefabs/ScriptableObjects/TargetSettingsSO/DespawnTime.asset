@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dbb5fd61644384a89559fc5028a5ad, type: 3}
   m_Name: DespawnTime
   m_EditorClassIdentifier: 
-  Value: 0
+  Value: 5

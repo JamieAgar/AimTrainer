@@ -17,7 +17,7 @@ namespace Target
         public float gravity = -9.81f;
 
         //Initial Z point the target should move to before becoming random. This is to prevent the targets getting stay behind terrain
-        private float targetZ = -12f;
+        private readonly float targetZ = -12f;
         private bool reachedTargetZ = false;
 
         //Does the target need to go +z to get to target. So that the target doesn't need to reach exactly the target
@@ -104,7 +104,7 @@ namespace Target
         void FixedUpdate()
         {
             //Move the target in the direction
-            characterController.Move(direction * targetSettingsSO.mimicSpeed.Value * Time.deltaTime);
+            characterController.Move(direction * targetSettingsSO.targetSpeed.Value * Time.deltaTime);
 
             //Handle gravity
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

@@ -8,7 +8,7 @@ namespace Target
     {
         //Determine the direction the target should move so the targets are always moving towards the center
         private Vector3 direction = Vector3.zero;
-        private float targetZ = -12f;
+        private readonly float targetZ = -12f;
 
         public ScoreSO scoreSO;
         public TargetSettingsSO targetSettingsSO;
@@ -40,8 +40,8 @@ namespace Target
                 TargetMiss();
             }
 
-            //Move the target 
-            transform.parent.Translate(direction * Time.deltaTime, Space.World);
+            //CircularTargets move too fast, so we lower their speed here
+            transform.parent.Translate(direction * targetSettingsSO.targetSpeed.Value * Time.deltaTime * 0.25f, Space.World);
         }
         
         public void TargetHit()

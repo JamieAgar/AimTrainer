@@ -19,9 +19,9 @@ public class TargetSettings : MonoBehaviour
     public void UpdateUI()
     {
         Slider speedSlider = uiElements[0].GetComponent<Slider>();
-        speedSlider.value = settingsSO.mimicSpeed.Value;
+        speedSlider.value = settingsSO.targetSpeed.Value;
         TMPro.TMP_InputField speedField = uiElements[1].GetComponent<TMPro.TMP_InputField>();
-        speedField.text = settingsSO.mimicSpeed.Value.ToString();
+        speedField.text = settingsSO.targetSpeed.Value.ToString();
 
         Slider despawnSlider = uiElements[2].GetComponent<Slider>();
         despawnSlider.value = settingsSO.despawnTime.Value;
@@ -41,7 +41,7 @@ public class TargetSettings : MonoBehaviour
 
     public void UpdateSpeed(float speed)
     {
-        settingsSO.mimicSpeed.Value = speed;
+        settingsSO.targetSpeed.Value = speed;
         UpdateUI();
     }
     public void UpdateDespawnTime(float despawnTime)
@@ -62,7 +62,7 @@ public class TargetSettings : MonoBehaviour
 
     public void EasyPreset()
     {
-        settingsSO.mimicSpeed.Value = 8f;
+        settingsSO.targetSpeed.Value = 4f;
         settingsSO.despawnTime.Value = 10f;
         settingsSO.minChangeTime.Value = 7f;
         settingsSO.maxChangeTime.Value = 7f;
@@ -70,7 +70,7 @@ public class TargetSettings : MonoBehaviour
     }
     public void MediumPreset()
     {
-        settingsSO.mimicSpeed.Value = 12f;
+        settingsSO.targetSpeed.Value = 8f;
         settingsSO.despawnTime.Value = 5f;
         settingsSO.minChangeTime.Value = 2f;
         settingsSO.maxChangeTime.Value = 8f;
@@ -78,7 +78,7 @@ public class TargetSettings : MonoBehaviour
     }
     public void HardPreset()
     {
-        settingsSO.mimicSpeed.Value = 15f;
+        settingsSO.targetSpeed.Value = 12f;
         settingsSO.despawnTime.Value = 2f;
         settingsSO.minChangeTime.Value = .5f;
         settingsSO.maxChangeTime.Value = 2f;
