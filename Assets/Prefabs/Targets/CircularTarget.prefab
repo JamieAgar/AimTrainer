@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023a201411bce4f45bf1d9c728a48970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreSO: {fileID: 11400000, guid: 6fd7f41f06efbc944a6e8b69b13647be, type: 2}
+  targetSettingsSO: {fileID: 11400000, guid: f1065a072b28c9a4fba3ce24a95c55e6, type: 2}
   score: 5
 --- !u!1 &5241038569660295968
 GameObject:
@@ -137,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023a201411bce4f45bf1d9c728a48970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreSO: {fileID: 11400000, guid: 6fd7f41f06efbc944a6e8b69b13647be, type: 2}
+  targetSettingsSO: {fileID: 11400000, guid: f1065a072b28c9a4fba3ce24a95c55e6, type: 2}
   score: 3
 --- !u!1 &5787510597681244441
 GameObject:
@@ -249,6 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023a201411bce4f45bf1d9c728a48970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreSO: {fileID: 11400000, guid: 6fd7f41f06efbc944a6e8b69b13647be, type: 2}
+  targetSettingsSO: {fileID: 11400000, guid: f1065a072b28c9a4fba3ce24a95c55e6, type: 2}
   score: 1
 --- !u!1 &9052643678666909794
 GameObject:

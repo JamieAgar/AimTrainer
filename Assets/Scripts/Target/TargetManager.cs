@@ -8,6 +8,7 @@ namespace Target
     {
         public float targetSpeed = 12f;
         public TargetSettingsSO targetSettingsSO;
+        public ScoreSO scoreSO;
 
         public GameObject characterTargetPrefab;
         public GameObject circularTargetPrefab;
@@ -25,6 +26,7 @@ namespace Target
 
         public void SpawnCharacterTarget()
         {
+            scoreSO.numTargets.Value++;
             GameObject spawner = characterTargetSpawners[Random.Range(0, characterTargetSpawners.Length)];
             GameObject target = Instantiate(characterTargetPrefab, spawner.transform);
             targetSettingsSO.mimicSpeed.Value = targetSpeed;
@@ -32,6 +34,7 @@ namespace Target
 
         public void SpawnCircularTarget()
         {
+            scoreSO.numTargets.Value++;
             GameObject spawner = circularTargetSpawners[Random.Range(0, circularTargetSpawners.Length)];
             Quaternion rotation = Quaternion.identity;
             rotation.eulerAngles = new Vector3(0, -90, 0);

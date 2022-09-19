@@ -14,9 +14,8 @@ namespace Target
         }
         public void TargetHit()
         {
-            CharacterTarget ct = gameObject.GetComponentInParent<CharacterTarget>();
-            ct.TargetHit();
-            Debug.Log("Head Hit!");
+            MimicTarget mt = gameObject.GetComponentInParent<MimicTarget>();
+            mt.HeadHit();
         }
     }
 }

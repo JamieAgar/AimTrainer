@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689eb4e98f487ea48bdbe61563ac268f, type: 3}
+  m_Name: ScoreSO
+  m_EditorClassIdentifier: 
+  numTargets: {fileID: 11400000, guid: 1fb3b9d098b69ba4dbe0417dde7d4e2c, type: 2}
+  numHeadshots: {fileID: 11400000, guid: be7886b909cbf2a4ebbfbde5309e6e49, type: 2}
+  numBodyshots: {fileID: 11400000, guid: 0ba5789611e73374fa76497f72f27565, type: 2}
+  numMimicMisses: {fileID: 11400000, guid: 7cef8e7fdd2974044b4754b1882914f5, type: 2}
+  numFives: {fileID: 11400000, guid: f4d5d0eb0966a644097d998ed8909fd9, type: 2}
+  numThrees: {fileID: 11400000, guid: a6d619fdd547aaa48a54579f3e7be4a1, type: 2}
+  numOnes: {fileID: 11400000, guid: c488283ee66d8db499623c92235a6f48, type: 2}
+  numCircularMisses: {fileID: 11400000, guid: 3123d637f39eb4e4fa74512694b5a2e7, type: 2}

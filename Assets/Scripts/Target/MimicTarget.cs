@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace Target
 {
-    public class CharacterTarget : MonoBehaviour, ITarget
+    public class MimicTarget : MonoBehaviour, ITarget
     {
         public CharacterController characterController;
 
         public TargetSettingsSO targetSettingsSO;
+        public ScoreSO scoreSO;
         private float changeDirectionTime;
 
         private Vector3 direction;
@@ -80,7 +81,7 @@ namespace Target
             if (despawnTimer > targetSettingsSO.despawnTime.Value)
             {
                 //Debug.Log("Target Despawned");
-                TargetHit();
+                TargetMiss();
             }
 
             if (!reachedTargetZ)
@@ -99,6 +100,7 @@ namespace Target
                 }
             }
         }
+
         void FixedUpdate()
         {
             //Move the target in the direction
@@ -126,11 +128,28 @@ namespace Target
             changeDirectionTime = Random.Range(targetSettingsSO.minChangeTime.Value, targetSettingsSO.maxChangeTime.Value);
         }
 
+        #region Hitting and scoring
         public void TargetHit()
         {
             //TODO: Change this to events. Removes the link between the target and the targetManager
             targetManager.SpawnCharacterTarget();
+            scoreSO.numBodyshots.Value++;
             Destroy(gameObject);
         }
+        public void HeadHit()
+        {
+            //TODO: Change this to events. Removes the link between the target and the targetManager
+            targetManager.SpawnCharacterTarget();
+            scoreSO.numHeadshots.Value++;
+            Destroy(gameObject);
+        }
+        public void TargetMiss()
+        {
+            //TODO: Change this to events. Removes the link between the target and the targetManager
+            targetManager.SpawnCharacterTarget();
+            scoreSO.numMimicMisses.Value++;
+            Destroy(gameObject);
+        }
+        #endregion
     }
 }
